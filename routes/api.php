@@ -18,7 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/', function () {
+Route::post('/', function () {
     return 'Buah';
 });
 
+Route::prefix('User')->group(function(){
+    Route::post('add', 'Api\UserController@add');
+    Route::post('get', 'Api\UserController@get');
+});
