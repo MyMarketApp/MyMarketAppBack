@@ -17,7 +17,7 @@ class StoreController extends Controller
             $store->imageUrl = $request->imageUrl;
             // $store->latitude = $request->latitude;
             // $store->longitude = $request->longitude;
-            $store->coordinate = $request->coordinate;
+            $store->coordinate = json_encode($request->coordinate);
             $store->save();
             
             return response()->json(['status' => true, 
