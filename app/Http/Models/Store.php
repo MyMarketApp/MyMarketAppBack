@@ -11,6 +11,6 @@ class Store extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name', 'direction', 'imageUrl'
+        'name', 'direction', 'imageUrl', 'latitude', 'longitude'
     ];
 }
