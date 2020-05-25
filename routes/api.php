@@ -26,3 +26,8 @@ Route::prefix('User')->group(function(){
     Route::post('add', 'Api\UserController@add');
     Route::post('get', 'Api\UserController@get');
 });
+
+Route::prefix('Store')->group(function(){
+    Route::post('add', 'Api\StoreController@add');
+    Route::post('all', 'Api\StoreController@all');
+});
