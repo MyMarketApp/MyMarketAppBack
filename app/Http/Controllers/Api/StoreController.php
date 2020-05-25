@@ -31,7 +31,7 @@ class StoreController extends Controller
         }
     }
 
-    public function all(Request $request){
+    public function all(){
         try
         {
             $stores = Store::all();
