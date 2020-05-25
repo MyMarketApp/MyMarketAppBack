@@ -38,7 +38,9 @@ class StoreController extends Controller
         try
         {
             $stores = Store::all();
-
+            foreach ($stores as $store){ 
+                $store->coordinate = json_decode($store->coordinate);
+                }
             return response()->json(['status' => true, 
                 'message'=> 'Stores Found',
                 'body'=> $stores],
