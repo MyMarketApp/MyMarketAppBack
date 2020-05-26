@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('lastName');
             $table->string('phone');
             $table->string('adress');
-            $table->json('coordinate');
+            $table->json('coordinates');
             $table->timestamps();
         });
     }

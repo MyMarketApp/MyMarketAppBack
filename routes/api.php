@@ -24,7 +24,8 @@ Route::post('/', function () {
 
 Route::prefix('User')->group(function(){
     Route::post('add', 'Api\UserController@add');
-    Route::post('get', 'Api\UserController@get');
+    Route::post('login', 'Api\UserController@login');
+    Route::get('{email}/verify', 'Api\UserController@verify');
 });
 
 Route::prefix('Store')->group(function(){

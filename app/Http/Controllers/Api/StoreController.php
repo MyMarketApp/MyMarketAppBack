@@ -15,7 +15,7 @@ class StoreController extends Controller
             $store->name = $request->name;
             $store->direction = $request->direction;
             $store->imageUrl = $request->imageUrl;
-            $store->coordinate = json_encode($request->coordinate);
+            $store->coordinates = json_encode($request->coordinates);
             $store->save();
             
             return response()->json(['status' => true, 
@@ -37,7 +37,7 @@ class StoreController extends Controller
         {
             $stores = Store::all();
             foreach ($stores as $store){ 
-                $store->coordinate = json_decode($store->coordinate);
+                $store->coordinates = json_decode($store->coordinates);
                 }
             return response()->json(['status' => true, 
                 'message'=> 'Stores Found',

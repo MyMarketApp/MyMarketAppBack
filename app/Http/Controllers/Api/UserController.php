@@ -18,7 +18,7 @@ class UserController extends Controller
             $user->lastName = $request->lastName;
             $user->phone = $request->phone;
             $user->adress = $request->adress;
-            $user->coordinate = json_encode($request->coordinate);
+            $user->coordinates = json_encode($request->coordinates);
             $user->save();
             
             return response()->json(['status' => true, 
@@ -35,13 +35,42 @@ class UserController extends Controller
         }
     }
 
-    public function get(Request $request){
+    public function login(Request $request){
         try
         {
-            $user = User::where('email',$request->email)->first();
+            $user = User::where('email',$request->email)->where('password',$request->password)->first();
             if($user)
             {
-                $user->coordinate = json_decode($request->coordinate);
+                $user->coordinates = json_decode($request->coordinates);
+                return response()->json(['status' => true, 
+                    'message'=> 'Login Success',
+                    'body'=> $user],
+                    200);
+            }
+            else {
+                return response()->json(['status' => false, 
+                    'message'=> 'Login Fail',
+                    'body'=> $user],
+                    200);
+            }
+            
+        }
+        catch(\Exception $e)
+        {
+            return response()->json(['status' => false,
+                'message'=> 'Hubo un error',
+                'body' => $e->getMessage()],
+                500);
+        }
+    }
+
+    public function verify($email){
+        try
+        {
+            $user = User::where('email',$email)->first();
+            if($user)
+            {
+                $user->coordinates = json_decode($user->coordinates);
                 return response()->json(['status' => true, 
                     'message'=> 'User Found',
                     'body'=> $user],

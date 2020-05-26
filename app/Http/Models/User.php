@@ -11,7 +11,7 @@ class User extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name', 'email', 'password','lastName','phone','adress','coordinate'
+        'name', 'email', 'password','lastName','phone','adress','coordinates'
     ];
     protected $hidden = [
         'password',
