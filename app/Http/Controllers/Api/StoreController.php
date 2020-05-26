@@ -15,8 +15,6 @@ class StoreController extends Controller
             $store->name = $request->name;
             $store->direction = $request->direction;
             $store->imageUrl = $request->imageUrl;
-            // $store->latitude = $request->latitude;
-            // $store->longitude = $request->longitude;
             $store->coordinate = json_encode($request->coordinate);
             $store->save();
             

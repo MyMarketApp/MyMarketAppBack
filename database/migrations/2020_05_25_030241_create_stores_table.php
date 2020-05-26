@@ -18,8 +18,6 @@ class CreateStoresTable extends Migration
             $table->string('name');
             $table->string('direction');
             $table->string('imageUrl');
-            // $table->string('latitude');
-            // $table->string('longitude');
             $table->json('coordinate');
             $table->timestamps();
         });

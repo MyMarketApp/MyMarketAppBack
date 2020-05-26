@@ -17,6 +17,8 @@ class UserController extends Controller
             $user->password = $request->password;
             $user->lastName = $request->lastName;
             $user->phone = $request->phone;
+            $user->adress = $request->adress;
+            $user->coordinate = json_encode($request->coordinate);
             $user->save();
             
             return response()->json(['status' => true, 
@@ -37,11 +39,21 @@ class UserController extends Controller
         try
         {
             $user = User::where('email',$request->email)->first();
-
-            return response()->json(['status' => true, 
-                'message'=> 'User Found',
-                'body'=> $user],
-                200);
+            if($user)
+            {
+                $user->coordinate = json_decode($request->coordinate);
+                return response()->json(['status' => true, 
+                    'message'=> 'User Found',
+                    'body'=> $user],
+                    200);
+            }
+            else {
+                return response()->json(['status' => false, 
+                    'message'=> 'User Not Found',
+                    'body'=> $user],
+                    200);
+            }
+            
         }
         catch(\Exception $e)
         {
