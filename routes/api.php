@@ -24,6 +24,7 @@ Route::post('/', function () {
 
 Route::prefix('User')->group(function(){
     Route::post('add', 'Api\UserController@add');
+    Route::post('update', 'Api\UserController@update');
     Route::post('login', 'Api\UserController@login');
     Route::get('{email}/verify', 'Api\UserController@verify');
 });

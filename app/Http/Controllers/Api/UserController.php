@@ -92,4 +92,32 @@ class UserController extends Controller
                 500);
         }
     }
+
+    public function update(Request $request){
+        try
+        {
+            $user = User::where('email',$request->email)->first();
+            $user->name = $request->name;
+            $user->password = $request->password;
+            $user->lastName = $request->lastName;
+            $user->phone = $request->phone;
+            $user->adress = $request->adress;
+            $user->coordinates = json_encode($request->coordinates);
+            $user->save();
+
+            return response()->json(['status' => true, 
+                'message'=> 'Update Success',
+                'body'=> $user],
+                200);
+
+            
+        }
+        catch(\Exception $e)
+        {
+            return response()->json(['status' => false,
+                'message'=> 'Hubo un error',
+                'body' => $e->getMessage()],
+                500);
+        }
+    }
 }
