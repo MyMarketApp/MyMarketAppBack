@@ -21,7 +21,7 @@ class Product extends Model
     }
 
     public function stores(){
-        return $this->belongsToMany('App\Http\Models\Store', 'product_store', 'idStore','idProduct')
+        return $this->belongsToMany('App\Http\Models\Store', 'product_store','idProduct', 'idStore')
                                     ->withPivot('quantity');
     }
 }
