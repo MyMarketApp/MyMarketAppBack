@@ -13,7 +13,7 @@ class StoreController extends Controller
         {
             $store = new Store();
             $store->name = $request->name;
-            $store->direction = $request->direction;
+            $store->adress = $request->adress;
             $store->imageUrl = $request->imageUrl;
             $store->coordinates = json_encode($request->coordinates);
             $store->save();

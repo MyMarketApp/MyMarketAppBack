@@ -33,3 +33,11 @@ Route::prefix('Store')->group(function(){
     Route::post('add', 'Api\StoreController@add');
     Route::get('all', 'Api\StoreController@all');
 });
+
+Route::prefix('Product')->group(function(){
+    Route::post('add', 'Api\ProductController@add');
+});
+
+Route::prefix('CategoryProduct')->group(function(){
+    Route::get('{name}/add', 'Api\CategoryProductController@add');
+});

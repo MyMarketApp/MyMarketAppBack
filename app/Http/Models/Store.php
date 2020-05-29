@@ -11,6 +11,11 @@ class Store extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name', 'direction', 'imageUrl', 'coordinates'
+        'name', 'adress', 'imageUrl', 'coordinates'
     ];
+
+    public function products(){
+        return $this->belongsToMany('App\Http\Models\Product', 'product_store', 'idProduct', 'idStore')
+                                    ->withPivot('quantity');
+    }
 }
