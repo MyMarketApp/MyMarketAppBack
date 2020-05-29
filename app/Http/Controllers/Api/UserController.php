@@ -104,7 +104,7 @@ class UserController extends Controller
             $user->adress = $request->adress;
             $user->coordinates = json_encode($request->coordinates);
             $user->save();
-
+            $user->coordinates = json_decode($user->coordinates);
             return response()->json(['status' => true, 
                 'message'=> 'Update Success',
                 'body'=> $user],
