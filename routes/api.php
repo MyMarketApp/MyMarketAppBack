@@ -32,6 +32,7 @@ Route::prefix('User')->group(function(){
 Route::prefix('Store')->group(function(){
     Route::post('add', 'Api\StoreController@add');
     Route::get('all', 'Api\StoreController@all');
+    Route::get('{id}/products', 'Api\StoreController@products');
 });
 
 Route::prefix('Product')->group(function(){

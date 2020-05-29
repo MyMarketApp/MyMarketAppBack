@@ -52,4 +52,23 @@ class StoreController extends Controller
                 500);
         }
     }
+
+    public function products($id){
+        try
+        {
+            $store = Store::where('id',$id)->with(['products'])->first();
+
+            return response()->json(['status' => true, 
+                'message'=> 'Products Found',
+                'body'=> $store->products],
+                200);
+        }
+        catch(\Exception $e)
+        {
+            return response()->json(['status' => false,
+                'message'=> 'Hubo un error',
+                'body' => $e->getMessage()],
+                500);
+        }
+    }
 }
