@@ -38,7 +38,9 @@ class UserController extends Controller
     public function login(Request $request){
         try
         {
-            $user = User::where('email',$request->email)->where('password',$request->password)->first();
+            $user = User::where('email',$request->email)
+                        ->where('password',$request->password)
+                        ->with(['orders.product'])->first();
             if($user)
             {
                 $user->coordinates = json_decode($request->coordinates);
@@ -67,7 +69,7 @@ class UserController extends Controller
     public function verify($email){
         try
         {
-            $user = User::where('email',$email)->first();
+            $user = User::where('email',$email)->with(['orders.product'])->first();
             if($user)
             {
                 $user->coordinates = json_decode($user->coordinates);

@@ -17,4 +17,9 @@ class User extends Model
         'password',
     ];
 
+    public function orders()
+    {
+        return $this->hasMany('App\Http\Models\Order','idUser','id');
+    }
+
 }
