@@ -35,10 +35,17 @@ Route::prefix('Store')->group(function(){
     Route::get('{id}/products', 'Api\StoreController@products');
 });
 
+Route::prefix('Order')->group(function(){
+    Route::get('state/{nombre}/add', 'Api\StateOrderController@add');
+    Route::get('state/all', 'Api\StateOrderController@all');
+    Route::get('add', 'Api\OrderController@add');
+});
+
 Route::prefix('Product')->group(function(){
     Route::post('add', 'Api\ProductController@add');
 });
 
 Route::prefix('CategoryProduct')->group(function(){
     Route::get('{name}/add', 'Api\CategoryProductController@add');
+    Route::get('all', 'Api\CategoryProductController@all');
 });

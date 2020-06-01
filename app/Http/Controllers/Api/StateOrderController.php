@@ -4,21 +4,21 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Models\CategoryProduct;
+use App\Http\Models\StateOrder;
 
-class CategoryProductController extends Controller
+class StateOrderController extends Controller
 {
     //
     public function add($name){
         try
         {
-            $category = new CategoryProduct();
-            $category->name = $name;
-            $category->save();
+            $state = new StateOrder();
+            $state->name = $name;
+            $state->save();
             
             return response()->json(['status' => true, 
-                'message'=> 'Category Product Created',
-                'body'=> $category],
+                'message'=> 'State Order Created',
+                'body'=> $state],
                 200);
         }
         catch(\Exception $e)
@@ -33,11 +33,11 @@ class CategoryProductController extends Controller
     public function all(){
         try
         {
-            $categorys = CategoryProduct::all();
+            $states = StateOrder::all();
             
             return response()->json(['status' => true, 
-                'message'=> 'Categorys Found',
-                'body'=> $categorys],
+                'message'=> 'States Order Found',
+                'body'=> $states],
                 200);
         }
         catch(\Exception $e)

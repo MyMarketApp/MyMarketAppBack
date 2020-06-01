@@ -12,7 +12,7 @@ class Product extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name', 'description', 'price', 'idCategory'. 'imageUrl'
+        'name', 'description', 'price', 'idCategory', 'imageUrl'
     ];
 
     public function category()
