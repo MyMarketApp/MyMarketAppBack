@@ -37,6 +37,7 @@ Route::prefix('Store')->group(function(){
 
 Route::prefix('Order')->group(function(){
     Route::get('state/{nombre}/add', 'Api\StateOrderController@add');
+    Route::get('{id}/delete', 'Api\OrderController@delete');
     Route::get('state/all', 'Api\StateOrderController@all');
     Route::post('add', 'Api\OrderController@add');
 });

@@ -52,4 +52,25 @@ class OrderController extends Controller
                 500);
         }
     }
+
+    public function delete($id){
+        try
+        {
+            $order = Order::where('id',$id)->first();
+            $order->delete();
+            return response()->json(['status' => true, 
+            'message'=> 'Order deleted',
+            'body'=> $order],
+            200);
+            
+            
+        }
+        catch(\Exception $e)
+        {
+            return response()->json(['status' => false,
+                'message'=> 'Hubo un error',
+                'body' => $e->getMessage()],
+                500);
+        }
+    }
 }
