@@ -15,7 +15,7 @@ class OrderController extends Controller
             $previousOrder = Order::where('idStore',$request->idStore)
                         ->where('idProduct',$request->idProduct)
                         ->where('idState',$request->idState)
-                        ->where('idUser',$request->idUser)->first();
+                        ->where('idUser',$request->idUser)->with(['product'])->first();
 
             if($previousOrder)
             {
@@ -35,6 +35,7 @@ class OrderController extends Controller
                 $order->idState = $request->idState;
                 $order->idUser = $request->idUser;
                 $order->save();
+                $order->product;
 
                 return response()->json(['status' => true, 
                 'message'=> 'Order Created',
